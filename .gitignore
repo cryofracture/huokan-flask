@@ -3,7 +3,7 @@ praw.ini
 venv
 __pycache__
 # Elastic Beanstalk Files
-.elasticbeanstalk/*
+.elasticbeanstalk*/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
 vars.tf
