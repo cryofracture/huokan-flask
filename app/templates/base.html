@@ -1,0 +1,14 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block head %}
+{{super()}}
+<title>{{ title }} - Huokan Customer ID Generator</title>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="container w-50 mx-auto">
+        {% block app_content %}{% endblock %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block head %}
+{{super()}}
+<link rel="stylesheet" type="text/css" href="static/css/base.css">
+<script src="static/js/validateCustomer.js"></script>
+<script src="static/js/validateAdvertiser.js"></script>
+{% endblock %}
+
+{% block app_content %}
+<div class="container input-group mb-3 mx-auto mainInput">
+    <p>
+        <a class="btn btn-info" data-toggle="collapse" href="#submissionInfo" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Click for more information
+        </a>
+    </p>
+    <div class="form-group">
+        <div class="collapse" id="submissionInfo">
+            <div class="card card-body submissionTip">
+                When entering customer and advertiser names:<br>
+                1. they MUST be in the format of Name-Realm. <br>
+                2. If the realm is 2 words, keep the space. <br>
+                3. If the realm has an apostrophe, omit it. (work in progress) <br>
+                4. Include alt characters for character names.<br>
+            </div>
+        </div>
+    </div>
+    <!-- <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="When entering customer and advertiser names, they MUST be in the format of Name-Realm. If the realm is 2 words, eliminate the space. Keep all other bits of the Realm Name. Include alt characters for character names.">Click for more info on submitting</button> --> -->
+    <form method="POST" onsubmit="return (validateCustomer() && validateAdvertiser());" action="{{url_for('generated') }}" name="IDForm">
+        <div class="form-group">
+            <label class="label label-secondary" for="customerName">Customer Name-Realm (e.g. Cryofracture-Area52</label>
+            <input type="text" class="form-control" name="customerName" placeholder="Cryofracture-Area52" pattern="^.{2,}[\-].{5,}" required>
+        </div>
+        <div class="form-group">
+            <label class="label label-secondary" for="advertiserName">Advertiser Name-Realm (e.g. Meperitab-Tichondrius)</label>
+            <input type="text" class="form-control" name="advertiserName" placeholder="Meperitab-Tichondrius" pattern="^.{2,}[\-].{5,}" required>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-success" type="submit">Get Customer ID</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

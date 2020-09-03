@@ -1,0 +1,71 @@
+version: '3'
+services:
+    nginx:
+        image: nginx
+        ports:
+            - 80:80
+        volumes:
+            - ./nginx.conf:/etc/nginx/conf.d/default.conf
+        depends_on: 
+            - flask
+        networks:
+            - webserv
+    postgres:
+        image: postgres
+        # build:
+        #     context: ./db
+        #     dockerfile: Dockerfile
+        ports:
+            - 5432:5432
+        volumes:
+            - /var/lib/postgresql/data
+            - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+        restart: on-failure
+        environment:
+            - POSTGRES_PASSWORD="${pg_pass}"
+            - POSTGRES_DB=huokan
+            - POSTGRES_USER=postgres
+            - POSTGRES_PORT=5432
+        networks:
+            db:
+                aliases:
+                    - postgres
+    
+    flask:
+        build:
+            context: ./app
+            dockerfile: Dockerfile
+        image: flask:0.0.1
+        container_name: flask
+        volumes:
+            - ./app:/app/
+        environment:
+            - FLASK_APP=/app/application.py
+            - FLASK_RUN_PORT=8080
+            - DB_PORT=5432
+            - DB_PASS="${pg_pass}"
+            - DB_USER=postgres
+            - DB_HOST=postgres
+            - DB_NAME=huokan
+            - DB_SCHEMA=public
+            - DB_TABLE=customers
+            - DB_COLS=customer_id, customer_name, advertiser_name, created_date
+            - TABLE_COLS=customer_name AS customer_name, customer_id AS customer_id, created_date AS created_date
+            - EXISTING_NAME=customer_name
+        command: flask run --host=0.0.0.0 --port=5000
+        ports:
+            - 8080:5000
+        # env_file:
+        #     - .env
+        networks:
+            webserv:
+                aliases:
+                    - flask-app
+            db:
+                aliases: 
+                    - flask
+
+networks:
+    webserv:
+
+    db:

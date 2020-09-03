@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block head %}
+{{super()}}
+<link rel="stylesheet" type="text/css" href="static/css/base.css">
+<script src="static/js/downloadCSV.js" ></script>
+<script src="static/js/exportTableToCSV.js"></script>
+{% endblock %}
+
+{% block app_content %}
+<div class="container finalResult">
+    <p>Thank you for submitting your information to the Huokan database.<br>
+    Please DO NOT LOSE your customer's ID.<br>
+    Manual points are NOT to be counted on.<br>
+    </p>
+    <table class="table" id="IDTable">
+        <thead>
+            <tr>
+                <th scope="col">New Customer ID</th>
+                <th scope="col">Customer Name</th>
+                <th scope="col">Advertiser Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">{{customer_uuid}}</th>
+                <td>{{customer_name}}</td>
+                <td>{{advertiser_name}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-success btn-small" onclick="exportTableToCSV('huokan_customer_id-{{customer_uuid}}.csv')">Download Customer ID</button>
+</div>
+{% endblock %}

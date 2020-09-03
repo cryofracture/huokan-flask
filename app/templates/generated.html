@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block head %}
+{{super()}}
+<link rel="stylesheet" type="text/css" href="static/css/base.css">
+{% endblock %}
+
+{% block app_content %}
+<div class="container finalResult">
+    <div class="row">
+        <div class="col">
+            <p id="dbInfo">New Customer ID: {{customer_uuid}}</p>
+        </div>
+        <div class="col">
+            <p id="dbInfo">Customer Name: {{customer_name}}</p>
+        </div>
+        <div class="col">
+            <p id="dbInfo">Advertiser Name: {{advertiser_name}}</p>
+        </div>
+    </div>
+    <div class="input-group container mb-3 mx-auto dbInsert">
+        <form method="POST" action="{{url_for('confirmation')}}">
+            <input type="hidden" id="customerID" name="customerID" value="{{ customer_uuid}}">
+            <input type="hidden" id="customerName" name="customerName" value="{{ customer_name}}">
+            <input type="hidden" id="advertiserName" name="advertiserName" value="{{ advertiser_name}}">
+            <input type="hidden" id="createDate" name="createDate" value="{{ create_date}}">
+            <div class="form-group">
+                <button class="btn btn-success" type="submit">Send to Huokan DB </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

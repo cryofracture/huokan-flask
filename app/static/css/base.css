@@ -1,0 +1,63 @@
+html body {
+    /* background-color: black; */
+    background-image: url("../images/huokan1.PNG");
+    height: 100%;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+}
+
+button {
+    /* padding-top: 100px; */
+    padding: 100px;
+}
+
+.submissionTip {
+    color: white;
+}
+
+.mainInput {
+    margin: 100px;
+    background-color: rgb(35, 35, 35, 0.75);
+    border: 5px solid black;
+}
+
+#submissionInfo {
+    margin: 5%;
+    font-weight: bold;
+}
+
+.finalResult {
+    margin: 100px;
+    background-color: rgb(35, 35, 35, 0.75);
+    border: 5px solid black;
+}
+
+#dbInfo {
+    margin: 5%;
+    font-weight: bold;
+    color: white;
+}
+
+.finalResult p {
+    font-weight: bold;
+    color: white;
+}
+
+.table {
+    font-weight: bold;
+    color: white;
+}
+
+.existingResult {
+    margin: 100px;
+    background-color: rgb(35, 35, 35, 0.75);
+    border: 5px solid black;
+}
+
+.existingResult p {
+    font-weight: bold;
+    color: tomato;
+}
