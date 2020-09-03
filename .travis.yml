@@ -2,7 +2,7 @@ dist: xenial
 language: bash 
 sudo: required
 env:
-    - tf_version=0.13.2 tf_init_cli_options="-input=false" tf_validation_cli_options="" tf_plan_cli_options="-lock=false -input=false -var AWS_ACCESS_KEY=$AWS_ACCESS_KEY -var AWS_SECRET_KEY=$AWS_SECRET_KEY " tf_apply_cli_options="-auto-approve -input=false"  
+    - tf_version=0.13.2 tf_init_cli_options="-input=false" tf_validation_cli_options="" tf_plan_cli_options="-lock=false -input=false -var AWS_ACCESS_KEY="$AWS_ACCESS_KEY" -var AWS_SECRET_KEY="$AWS_SECRET_KEY" " tf_apply_cli_options="-auto-approve -input=false"  
 services:
     - docker
 before_install:
