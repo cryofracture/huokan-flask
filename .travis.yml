@@ -1,0 +1,48 @@
+dist: xenial
+language: bash 
+sudo: required
+env:
+    - tf_version=0.13.2 tf_init_cli_options="-input=false" tf_validation_cli_options="" tf_plan_cli_options="-lock=false -input=false" tf_apply_cli_options="-auto-approve -input=false"  
+services:
+    - docker
+before_install:
+  - wget https://releases.hashicorp.com/terraform/"$tf_version"/terraform_"$tf_version"_linux_amd64.zip
+  - unzip terraform_"$tf_version"_linux_amd64.zip
+  - sudo mv terraform /usr/local/bin/
+  - rm terraform_"$tf_version"_linux_amd64.zip
+
+jobs:
+  include:
+    - stage: docker-test
+    - stage: terraform plan
+      # Only run terraform validate and plan state if within a pull request
+      if: type IN (pull_request)
+      script:
+        - echo "Executing Terraform Plan on pull request code"
+        - terraform init $tf_init_cli_options
+        - terraform validate $tf_validation_cli_options
+        - terraform plan $tf_plan_cli_options
+    - stage: terraform apply
+      # Only run terraform apply stage if outside of a pull request
+      if: type IN (push) and branch = master
+      script:
+        - echo "Executing Terraform Apply on merged code"
+        - terraform init $tf_init_cli_options
+        - terraform apply $tf_apply_cli_options
+
+# script:
+#     - docker-compose build
+#     - docker-compose up -d
+
+# deploy:
+#     provider: s3
+#     access_key_id: "$AWS_ACCESS_KEY"
+#     secret_access_key: "$AWS_SECRET_KEY"
+#     region: "us-east-2"
+#     bucket: "Huokanflask"
+#     dot_match: true
+#     bucket_path: "huokan-flask"
+#     on:
+#         branch: master
+    
+#     skip_cleanup: true
