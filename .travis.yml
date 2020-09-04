@@ -4,7 +4,7 @@ sudo: required
 env:
     - tf_init_cli_options="-input=false" 
     - tf_validation_cli_options="" 
-    - tf_plan_cli_options="-lock=false -input=false -var AWS_ACCESS_KEY=\"$AWS_ACCESS_KEY\" -var AWS_SECRET_KEY=\"$AWS_SECRET_KEY\"
+    - tf_plan_cli_options="-lock=false -input=false"
     - tf_apply_cli_options="-auto-approve -input=false"  
 services:
     - docker
@@ -14,17 +14,41 @@ before_install:
   - sudo mv terraform /usr/local/bin/
   - rm terraform_0.13.2_linux_amd64.zip
 
-# jobs:
-#   include:
-#     - stage: docker-test
-#     - stage: terraform plan
-#       # Only run terraform validate and plan state if within a pull request
-#       if: type IN (pull_request)
-#       script:
-#         - echo "Executing Terraform Plan on pull request code"
-#         - terraform init $tf_init_cli_options
-#         - terraform validate $tf_validation_cli_options
-#         #- terraform plan $tf_plan_cli_options
+jobs:
+  include:
+    - stage: docker-test
+      if: type IN (pull_request)
+      script:
+        - sudo curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        - sudo chmod +x /usr/local/bin/docker-compose
+        - docker-compose --version
+        - docker-compose build
+        - docker-compose up -d
+    - stage: terraform plan
+      # Only run terraform validate and plan state if within a pull request
+      if: type IN (pull_request)
+      script:
+        - echo "Executing Terraform Plan on pull request code"
+        - terraform init $tf_init_cli_options
+        - terraform validate $tf_validation_cli_options
+        - sed -i 's/var.AWS_ACCESS_KEY/"$AWS_ACCESS_KEY"/g resource.tf'
+        - sed -i 's/var.AWS_SECRET_KEY/"$AWS_SECRET_KEY"/g resource.tf'
+        - terraform plan $tf_plan_cli_options
+    - stage: s3 deploy
+      if: type IN (push) and branch = master
+      deploy:
+        provider: s3
+        access_key_id: "$AWS_ACCESS_KEY"
+        secret_access_key: "$AWS_SECRET_KEY"
+        region: "us-east-2"
+        bucket: "Huokanflask"
+        dot_match: true
+        bucket_path: "huokan-flask"
+        on:
+            branch: master
+        
+        skip_cleanup: true
+    
 #     - stage: terraform apply
 #       # Only run terraform apply stage if outside of a pull request
 #       if: type IN (push) and branch = master
@@ -35,22 +59,5 @@ before_install:
 #         - terraform validate $tf_validation_cli_options
 #         - terraform plan $tf_plan_cli_options
 
-script:
-  - sudo curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-  - sudo chmod +x /usr/local/bin/docker-compose
-  - docker-compose --version
-  - docker-compose build
-  - docker-compose up -d
 
-# deploy:
-#     provider: s3
-#     access_key_id: "$AWS_ACCESS_KEY"
-#     secret_access_key: "$AWS_SECRET_KEY"
-#     region: "us-east-2"
-#     bucket: "Huokanflask"
-#     dot_match: true
-#     bucket_path: "huokan-flask"
-#     on:
-#         branch: master
-    
-#     skip_cleanup: true
+
