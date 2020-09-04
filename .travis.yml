@@ -5,7 +5,9 @@ env:
     - tf_init_cli_options="-input=false" 
     - tf_validation_cli_options="" 
     - tf_plan_cli_options="-lock=false -input=false"
-    - tf_apply_cli_options="-auto-approve -input=false"  
+    - tf_apply_cli_options="-auto-approve -input=false"
+    - AWS_ACCESS_KEY="$AWS_ACCESS_KEY"
+    - AWS_SECRET_KEY="$AWS_SECRET_KEY"
 services:
     - docker
 before_install:
@@ -31,8 +33,8 @@ jobs:
         - echo "Executing Terraform Plan on pull request code"
         - terraform init $tf_init_cli_options
         - terraform validate $tf_validation_cli_options
-        - sed -i 's/var.AWS_ACCESS_KEY/"$AWS_ACCESS_KEY"/g' resource.tf
-        - sed -i 's/var.AWS_SECRET_KEY/"$AWS_SECRET_KEY"/g' resource.tf
+        - sed -i 's/var.AWS_ACCESS_KEY/${AWS_ACCESS_KEY}/g' resource.tf
+        - sed -i 's/var.AWS_SECRET_KEY/${AWS_SECRET_KEY}/g' resource.tf
         - terraform plan $tf_plan_cli_options
     - stage: s3 deploy
       if: type IN (push) and branch = master
