@@ -7,26 +7,32 @@
 {% endblock %}
 
 {% block app_content %}
-<div class="container finalResult">
-    <p>This customer is already in the Huokan database.<br>
-    Please use the customer's existing ID.<br>
-    </p>
-    <table class="table" id="IDTable">
-        <thead>
-            <tr>
-                <th scope="col">Existing Customer ID</th>
-                <th scope="col">Customer Name</th>
-                <th scope="col">Enrolled On</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">{{existing_info[1]}}</th>
-                <td>{{existing_info[0]}}</td>
-                <td>{{existing_info[2]}}</td>
-            </tr>
-        </tbody>
-    </table>
-    <button class="btn btn-success btn-small" onclick="exportTableToCSV('huokan_customer_id-{{customer_uuid}}.csv')">Download Customer ID</button>
+<div class="container duplicateResult">
+    <div class="row">
+        <p class="text-danger">This customer is already in the Huokan database.<br>
+        Please use the customer's existing ID.<br>
+        </p>
+    </div>
+    <div class="row">
+        <table class="table" id="IDTable">
+            <thead>
+                <tr>
+                    <th scope="col">Existing Customer ID</th>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Enrolled On</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{existing_info[1]}}</th>
+                    <td>{{existing_info[0]}}</td>
+                    <td>{{existing_info[2]}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <button class="btn btn-success btn-small" onclick="exportTableToCSV('huokan_customer_id-{{existing_info[1]}}.csv')">Download Customer ID</button>
+    </div>
 </div>
 {% endblock %}

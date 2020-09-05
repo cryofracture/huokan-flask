@@ -35,29 +35,28 @@ button {
     border: 5px solid black;
 }
 
+.finalResult p {
+    font-weight: bold;
+    color: white;
+}
+
 #dbInfo {
     margin: 5%;
     font-weight: bold;
     color: white;
 }
 
-.finalResult p {
-    font-weight: bold;
-    color: white;
-}
-
-.table {
-    font-weight: bold;
-    color: white;
-}
-
-.existingResult {
+.duplicateResult {
     margin: 100px;
     background-color: rgb(35, 35, 35, 0.75);
     border: 5px solid black;
 }
 
-.existingResult p {
+.duplicateResult p {
     font-weight: bold;
-    color: tomato;
+}
+
+.table {
+    font-weight: bold;
+    color: white;
 }

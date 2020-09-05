@@ -46,12 +46,12 @@ def confirmation():
                                     port = os.environ['DB_PORT'],
                                     database = os.environ['DB_NAME'],
                                     user = os.environ['DB_USER'],
-                                    password = os.environ['pg_pass'])
+                                    password = os.environ['DB_PASS'])
 
         query = f""" INSERT INTO {os.environ['DB_SCHEMA']}.{os.environ['DB_TABLE']} ({os.environ['DB_COLS']}) VALUES ('{customer_uuid}','{customer_name}','{advertiser_name}','{create_date}') """
 
         connection = psycopg2.connect(user=os.environ['DB_USER'],
-                                      password=os.environ['pg_pass'],
+                                      password=os.environ['DB_PASS'],
                                       host=os.environ['DB_HOST'],
                                       port=os.environ['DB_PORT'],
                                       database=os.environ['DB_NAME'])
@@ -66,7 +66,7 @@ def confirmation():
                                       port = os.environ['DB_PORT'],
                                       database = os.environ['DB_NAME'],
                                       user = os.environ['DB_USER'],
-                                      password = os.environ['pg_pass'])
+                                      password = os.environ['DB_PASS'])
 
         query = f""" SELECT {os.environ['TABLE_COLS']} FROM {os.environ['DB_SCHEMA']}.{os.environ['DB_TABLE']} WHERE customer_name LIKE '{customer_name}' """
         # print(query)
