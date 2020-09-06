@@ -18,13 +18,10 @@
             <div class="card card-body submissionTip">
                 When entering customer and advertiser names:<br>
                 1. they MUST be in the format of Name-Realm. <br>
-                2. If the realm is 2 words, remove the space. <br>
-                3. If the realm has an apostrophe, omit it. (work in progress) <br>
-                4. Include alt characters for character names.<br>
+                2. Include alt characters for character names.<br>
             </div>
         </div>
     </div>
-    <!-- <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="When entering customer and advertiser names, they MUST be in the format of Name-Realm. If the realm is 2 words, eliminate the space. Keep all other bits of the Realm Name. Include alt characters for character names.">Click for more info on submitting</button> --> -->
     <form method="POST" onsubmit="return (validateCustomer() && validateAdvertiser());" action="{{url_for('generated') }}" name="IDForm">
         <div class="form-group">
             <label class="label label-secondary" for="customerName">Customer Name-Realm (e.g. Ibuyboosts-Area52</label>

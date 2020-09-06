@@ -24,15 +24,15 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{existing_info[1]}}</th>
-                    <td>{{existing_info[0]}}</td>
-                    <td>{{existing_info[2]}}</td>
+                    <td>{{customer_id}}</th>
+                    <td>{{customer_name}}</td>
+                    <td>{{created_date}}</td>
                 </tr>
             </tbody>
         </table>
     </div>
     <div class="row">
-        <button class="btn btn-success btn-small" onclick="exportTableToCSV('huokan_customer_id-{{existing_info[1]}}.csv')">Download Customer ID</button>
+        <button class="btn btn-success btn-small" onclick="exportTableToCSV('huokan_customer_id-{{customer_id}}.csv')">Download Customer ID</button>
     </div>
 </div>
 {% endblock %}
