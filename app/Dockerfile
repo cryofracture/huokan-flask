@@ -6,6 +6,5 @@ RUN pip install -r /app/requirements.txt
 
 WORKDIR /app
 
-#RUN set -o allexport; source .env; set +o allexport
 
 CMD [ "python", "app/application.py" ]
