@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block head %}
+{{super()}}
+<link rel="stylesheet" type="text/css" href="static/css/base.css">
+<script src="static/js/downloadCSV.js" ></script>
+<script src="static/js/exportTableToCSV.js"></script>
+{% endblock %}
+
+{% block app_content %}
+<div class="container finalResult">
+    <div class="row">
+        <p>Customer ID Located<br>
+        </p>
+    </div>
+    <div class="row">
+        <table class="table" id="IDTable">
+            <thead>
+                <tr>
+                    <th scope="col">Customer ID</th>
+                    <th>Customer Name</th>
+                    <th>Enrollment Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">{{customer_uuid}}</th>
+                    <td>{{customer_name}}</td>
+                    <td>{{created_date}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <button class="btn btn-success btn-small" onclick="exportTableToCSV('huokan_customer_id-{{customer_uuid}}.csv')">Download Customer ID</button>
+    </div>
+</div>
+{% endblock %}

@@ -1,7 +1,13 @@
 html body {
     /* background-color: black; */
     background-image: url("../images/huokan1.PNG");
-    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.navDiv a {
+    color: grey;
 }
 
 .container {
@@ -19,6 +25,12 @@ button {
 }
 
 .mainInput {
+    margin: 100px;
+    background-color: rgb(35, 35, 35, 0.75);
+    border: 5px solid black;
+}
+
+.navbarMain {
     margin: 100px;
     background-color: rgb(35, 35, 35, 0.75);
     border: 5px solid black;
@@ -59,4 +71,16 @@ button {
 .table {
     font-weight: bold;
     color: white;
+}
+
+.termsContent {
+    margin: 100px;
+    background-color: rgb(35, 35, 35, 0.75);
+    border: 5px solid black;
+    font-weight: bold;
+    color: white;
+    background-image: url("../images/huokan1.PNG");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
