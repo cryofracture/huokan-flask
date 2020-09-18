@@ -1,0 +1,131 @@
+commit 1b5cddbb35293a5a27548a0adf6c7350fd9c9a87
+Author: Cryofracture <thecryoforce@gmail.com>
+Date:   Mon Sep 14 04:07:45 2020 -0500
+
+    Added multiple HTML pages and flask routes. Fleshing out web app with additional features.
+
+commit 8c9bee865c9f2f982fb3d10de3d84e3d4aec13ad
+Author: Cryofracture <thecryoforce@gmail.com>
+Date:   Sun Sep 6 02:13:43 2020 -0500
+
+    Add some explanatory comments to application.py, remove comment from Dockerfile, adjust variable declaration in resource.tf
+
+commit 6e95c09f2d0b9fcbc26c19d15781457cdfd53628
+Author: Cryofracture <thecryoforce@gmail.com>
+Date:   Sun Sep 6 01:44:15 2020 -0500
+
+    Update db insertion for spacing and single quote escape, moving to logins soon.
+
+commit e2317d36c0d04bc01a95371284649fd90a84b828
+Author: Cryofracture <thecryoforce@gmail.com>
+Date:   Fri Sep 4 19:31:54 2020 -0500
+
+    Fix duplicate entry page and aligned CSV export button on both pages.
+
+commit d15d7b5a3632f0e8ac9702219852dfd75cd6bd57
+Author: Cryofracture <thecryoforce@gmail.com>
+Date:   Fri Sep 4 11:40:25 2020 -0500
+
+    Adjusting sed
+
+commit 910ebae05f9286918068fa487c2426317a5663a0
+Author: Cryofracture <thecryoforce@gmail.com>
+Date:   Fri Sep 4 02:33:45 2020 -0500
+
+    adjust sed
+
+commit 633f41f179634c442f0073af098b05455aff5e50
+Author: Cryofracture <thecryoforce@gmail.com>
+Date:   Fri Sep 4 01:52:22 2020 -0500
+
+    Adjust sed
+
+commit 8ea0b50f0bb81285f8e5c92d039c59c0c805a160
+Author: Cryofracture <thecryoforce@gmail.com>
+Date:   Fri Sep 4 01:37:55 2020 -0500
+
+    Adjust travis for terraform plan on push to master, update secrets in travis, remove EXPOSE from app/Dockerfile
+
+commit 357d1956455312c1a8f14191dfdae66c29df7f23
+Author: Cryofracture <thecryoforce@gmail.com>
+Date:   Thu Sep 3 01:03:00 2020 -0500
+
+    elasticbeanstalk ignore
+
+commit 79b18049a21207ce3567022c7c23da4f37c85056
+Author: Cryofracture <thecryoforce@gmail.com>
+Date:   Wed Sep 2 22:55:38 2020 -0500
+
+    Update README
+
+commit d8c4c65d035181770e4db3ae0fa7b7e90fc1a744
+Author: Cryofracture <thecryoforce@gmail.com>
+Date:   Wed Sep 2 22:45:47 2020 -0500
+
+    Migrate back to docker-compose test
+
+commit 9ad62c7fccab900c597930853171da621ead1e6e
+Author: Cryofracture <thecryoforce@gmail.com>
+Date:   Wed Sep 2 21:11:14 2020 -0500
+
+    Add environment variable to resource.tf
+
+commit 1447c41d003a86b24e0c8a3381552dabc446d303
+Author: Cryofracture <thecryoforce@gmail.com>
+Date:   Wed Sep 2 21:06:05 2020 -0500
+
+    Add environment variable to resource.tf
+
+commit adffd9d4c103714e1a0840b87e1622f01c416a4b
+Author: Cryofracture <thecryoforce@gmail.com>
+Date:   Wed Sep 2 21:00:53 2020 -0500
+
+    Add environment variable to resource.tf
+
+commit cf89602e64d05dbee04953f82b2ce9d3f2da344c
+Author: Cryofracture <thecryoforce@gmail.com>
+Date:   Wed Sep 2 20:54:55 2020 -0500
+
+    terraform hung
+
+commit 7b86b4a2aa4bc68ecb41e8d3a8bbce4693147a41
+Author: Cryofracture <thecryoforce@gmail.com>
+Date:   Wed Sep 2 20:46:44 2020 -0500
+
+    Adjust tfplan to merge as well for testing
+
+commit 829c67d2b82c30012fb412bbb32ea13a182e7d25
+Author: Cryofracture <thecryoforce@gmail.com>
+Date:   Wed Sep 2 20:35:51 2020 -0500
+
+    I'm struggling, can you tell
+
+commit ebbb8b942a0a638b571b47f7e47507dadbb25f10
+Author: Cryofracture <thecryoforce@gmail.com>
+Date:   Wed Sep 2 20:31:11 2020 -0500
+
+    Change env declaration.
+
+commit 4d4c7d9a119fd57762fa22b73dc3351fd6ff8754
+Author: Cryofracture <thecryoforce@gmail.com>
+Date:   Wed Sep 2 20:22:50 2020 -0500
+
+    Secret key management update
+
+commit a2d38eb967a4ccbb5871ffa7c149db5fbb1fb435
+Author: Cryofracture <thecryoforce@gmail.com>
+Date:   Wed Sep 2 20:17:44 2020 -0500
+
+    Update travis
+
+commit edb37333a4619429d55f232645569a6a04580220
+Author: Cryofracture <thecryoforce@gmail.com>
+Date:   Wed Sep 2 19:57:13 2020 -0500
+
+    Implement travis CICD with terrfaorm plan on pull, apply on merge.
+
+commit 3a85c6607cd2c80b3e22d903e4d99cdf0baa57ca
+Author: Cryofracture <thecryoforce@gmail.com>
+Date:   Wed Sep 2 19:55:50 2020 -0500
+
+    Initial commit

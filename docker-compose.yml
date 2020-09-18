@@ -22,7 +22,7 @@ services:
             - ./init.sql:/docker-entrypoint-initdb.d/init.sql
         restart: on-failure
         environment:
-            - POSTGRES_PASSWORD="${pg_pass}"
+            - POSTGRES_PASSWORD=${pg_pass}
             - POSTGRES_DB=huokan
             - POSTGRES_USER=postgres
             - POSTGRES_PORT=5432
@@ -35,7 +35,7 @@ services:
         build:
             context: ./app
             dockerfile: Dockerfile
-        image: flask:0.0.1
+        #image: flask:0.0.1
         container_name: flask
         volumes:
             - ./app:/app/

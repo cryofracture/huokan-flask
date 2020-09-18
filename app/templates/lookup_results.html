@@ -9,25 +9,23 @@
 {% block app_content %}
 <div class="container finalResult">
     <div class="row">
-        <p>Thank you for submitting your information to the Huokan database.<br>
-        Please DO NOT LOSE your customer's ID.<br>
-        Manual points are NOT to be counted on.<br>
+        <p>Customer ID Located<br>
         </p>
     </div>
     <div class="row">
         <table class="table" id="IDTable">
             <thead>
                 <tr>
-                    <th scope="col">New Customer ID</th>
-                    <th scope="col">Customer Name</th>
-                    <th scope="col">Advertiser Name</th>
+                    <th scope="col">Customer ID</th>
+                    <th>Customer Name</th>
+                    <th>Enrollment Date</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <th scope="row">{{customer_uuid}}</th>
                     <td>{{customer_name}}</td>
-                    <td>{{advertiser_name}}</td>
+                    <td>{{created_date}}</td>
                 </tr>
             </tbody>
         </table>

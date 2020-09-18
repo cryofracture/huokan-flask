@@ -16,20 +16,16 @@
     <div class="form-group">
         <div class="collapse" id="submissionInfo">
             <div class="card card-body submissionTip">
-                When entering customer and advertiser names:<br>
+                When entering customer name:<br>
                 1. they MUST be in the format of Name-Realm. <br>
                 2. Include alt characters for character names.<br>
             </div>
         </div>
     </div>
-    <form method="POST" onsubmit="return (validateCustomer('customerName') && validateAdvertiser('advertiserName'));" action="{{url_for('generated') }}" name="IDForm">
+    <form method="POST" onsubmit="return (validateCustomer('customerName'));" action="{{url_for('lookup_results') }}" name="IDForm">
         <div class="form-group">
             <label class="label label-secondary" for="customerName">Customer Name-Realm (e.g. Ibuyboosts-Area52</label>
             <input type="text" class="form-control" name="customerName" placeholder="Ibuyboosts-Area52" pattern="^.{2,}[\-].{5,}" required>
-        </div>
-        <div class="form-group">
-            <label class="label label-secondary" for="advertiserName">Advertiser Name-Realm (e.g. Cryofracture-Area52)</label>
-            <input type="text" class="form-control" name="advertiserName" placeholder="Cryofracture-Area52" pattern="^.{2,}[\-].{5,}" required>
         </div>
         <div class="form-group">
             <button class="btn btn-success" type="submit">Get Customer ID</button>

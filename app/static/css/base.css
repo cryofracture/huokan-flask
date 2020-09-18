@@ -1,7 +1,13 @@
 html body {
     /* background-color: black; */
     background-image: url("../images/huokan1.PNG");
-    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.navDiv a {
+    color: grey;
 }
 
 .container {
@@ -24,6 +30,12 @@ button {
     border: 5px solid black;
 }
 
+.navbarMain {
+    margin: 100px;
+    background-color: rgb(35, 35, 35, 0.75);
+    border: 5px solid black;
+}
+
 #submissionInfo {
     margin: 5%;
     font-weight: bold;
@@ -35,15 +47,25 @@ button {
     border: 5px solid black;
 }
 
+.finalResult p {
+    font-weight: bold;
+    color: white;
+}
+
 #dbInfo {
     margin: 5%;
     font-weight: bold;
     color: white;
 }
 
-.finalResult p {
+.duplicateResult {
+    margin: 100px;
+    background-color: rgb(35, 35, 35, 0.75);
+    border: 5px solid black;
+}
+
+.duplicateResult p {
     font-weight: bold;
-    color: white;
 }
 
 .table {
@@ -51,13 +73,14 @@ button {
     color: white;
 }
 
-.existingResult {
+.termsContent {
     margin: 100px;
     background-color: rgb(35, 35, 35, 0.75);
     border: 5px solid black;
-}
-
-.existingResult p {
     font-weight: bold;
-    color: tomato;
+    color: white;
+    background-image: url("../images/huokan1.PNG");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
